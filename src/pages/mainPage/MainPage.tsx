@@ -7,7 +7,7 @@ export const MainPage = () => {
   return (
     <MainPageWrapper>
       <Navigation />
-      <MainPageContent></MainPageContent>
+      <MainPageContent />
     </MainPageWrapper>
   );
 };

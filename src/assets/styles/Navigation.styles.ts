@@ -3,16 +3,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
 export const NavWrapper = styled(Navbar)`
-  width: 100%;
   display: flex;
   padding: 30px 20px 10px 30px;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.navBorder};
 `;
 
 export const Logo = styled(Navbar.Brand)`
-  text-decoration: none;
-  color: ${({ theme }) => theme.colors.textAndButton};
   font-size: ${({ theme }) => theme.fontSize.xxl};
+  color: ${({ theme }) => theme.colors.textAndButton};
+  text-decoration: none;
 
   &:hover {
     color: ${({ theme }) => theme.colors.textAndButton};
@@ -20,13 +19,12 @@ export const Logo = styled(Navbar.Brand)`
 `;
 
 export const ContentButton = styled(Nav.Link)`
+  align-self: center;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.textAndButton};
-  margin: 5px;
+  margin: ${({ theme }) => theme.spacing.xxs};
   padding: 0 25px;
-  font-size: 1.15rem;
-  justify-content: flex-end;
-  align-self: center;
+  font-size: ${({ theme }) => theme.fontSize.s};
   border: none;
   text-decoration: none;
   &:hover {
@@ -35,12 +33,12 @@ export const ContentButton = styled(Nav.Link)`
 `;
 
 export const LoginButton = styled(Nav.Link)`
+  align-self: center;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.textAndButton};
-  margin: 10px;
-  margin-left: 50px;
-  font-size: 1.1rem;
-  align-self: center;
+  margin: ${({ theme }) => theme.spacing.xs};
+  margin-left: ${({ theme }) => theme.spacing.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xs};
   border: none;
   font-weight: bold;
   text-decoration: none;
@@ -55,14 +53,14 @@ export const LoginButton = styled(Nav.Link)`
 `;
 
 export const SignUpButton = styled(Nav.Link)`
+  align-self: center;
+  padding: 2px 10px;
+  margin-left: ${({ theme }) => theme.spacing.s};
   color: ${({ theme }) => theme.colors.backgroundPrimary};
-  font-weight: bold;
   background-color: ${({ theme }) => theme.colors.textAndButton};
   border-radius: 20px;
   border: 1px solid transparent;
-  align-self: center;
-  padding: 2px 10px;
-  margin-left: 15px;
+  font-weight: bold;
   text-decoration: none;
 
   &:hover {

@@ -5,6 +5,12 @@ export const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
     *{ 
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        height:100vh;
     }
 
     body, a, button {

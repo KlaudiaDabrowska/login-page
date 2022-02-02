@@ -1,25 +1,40 @@
-import Form from 'react-bootstrap/Form';
 import styled from 'styled-components';
+import { Form, Button } from 'react-bootstrap';
 
 export const StyledForm = styled(Form)`
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   flex-direction: column;
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: ${({ theme }) => theme.spacing.xxxl};
+  margin-top: ${({ theme }) => theme.spacing.l};
   padding: 40px 40px 0px;
-  border-radius: 25px;
 `;
 
 export const StyledInput = styled(Form.Control)`
-  color: #000;
-  font-weight: bold;
-  background-color: yellow;
+  height: 35px;
+  border: 1px solid ${({ theme }) => theme.colors.backgroundPrimary};
+  border-radius: 20px;
+  font-weight: 200;
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.formBorder};
+    box-shadow: 0px 1px 5px 0rem rgb(41 107 206 / 25%);
+  }
 `;
 
 export const StyledLabel = styled(Form.Label)`
-  color: yellow;
+  color: ${({ theme }) => theme.colors.backgroundPrimary};
   font-weight: bold;
+`;
+
+export const StyledButton = styled(Button)`
+  margin-top: ${({ theme }) => theme.spacing.xs};
+  width: 80px;
+  background-color: ${({ theme }) => theme.colors.backgroundPrimary};
+  border: none;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.darkerBackgroundPrimary};
+  }
 `;

@@ -4,9 +4,12 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
       backgroundPrimary: string;
+      darkerBackgroundPrimary: string;
       textAndButton: string;
-      border: string;
+      navBorder: string;
       hoverTextAndButton: string;
+      formBorder: string;
+      buttonHover: string;
     };
     fontSize: {
       xxl: string;
@@ -19,6 +22,7 @@ declare module 'styled-components' {
       xxxs: string;
     };
     spacing: {
+      xxxxl: string;
       xxxl: string;
       xxl: string;
       xl: string;
@@ -26,8 +30,7 @@ declare module 'styled-components' {
       m: string;
       s: string;
       xs: string;
+      xxs: string;
     };
   }
 }
-
-type FontSize = 'xxl' | 'xl' | 'l' | 'm';
