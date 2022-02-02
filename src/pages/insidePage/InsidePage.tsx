@@ -1,12 +1,12 @@
 import React from 'react';
-import { PageContent } from '../../components/common/PageContent';
 import { PageWrapper } from '../../assets/styles/Wrappers.styles';
-import { Navigation } from './Navigation';
+import { PageContent } from '../../components/common/PageContent';
+import { NavBar } from './NavBar';
 
-export const MainPage = () => {
+export const InsidePage = () => {
   return (
     <PageWrapper>
-      <Navigation />
+      <NavBar />
       <PageContent />
     </PageWrapper>
   );

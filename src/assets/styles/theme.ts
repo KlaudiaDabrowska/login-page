@@ -11,7 +11,8 @@ export const theme: DefaultTheme = {
     buttonHover: '#c5cbe6',
   },
   fontSize: {
-    xxl: '3.125rem', //50px
+    xxxl: '3.125rem', //50px
+    xxl: '2.875rem', //46px
     xl: '2.5rem', //40px
     l: '1.563rem', //25px
     m: '1.25rem', //20px

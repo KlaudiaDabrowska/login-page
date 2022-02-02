@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { ContentButton, Logo, NavWrapper, LoginButton, SignUpButton } from '../../assets/styles/Navigation.styles';
+import { ContentButton, Logo, NavWrapper, LogButton, SignUpButton } from '../../assets/styles/Navigation.styles';
 import { Link } from 'react-router-dom';
 
 export const Navigation = () => {
@@ -23,9 +23,9 @@ export const Navigation = () => {
             </ContentButton>
           </Nav>
           <Nav>
-            <LoginButton as={Link} to="/login">
-              Login
-            </LoginButton>
+            <LogButton as={Link} to="/login">
+              Log in
+            </LogButton>
             <SignUpButton as={Link} to="/signup">
               Sign up
             </SignUpButton>

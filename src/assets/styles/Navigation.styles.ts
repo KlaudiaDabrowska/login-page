@@ -32,7 +32,7 @@ export const ContentButton = styled(Nav.Link)`
   }
 `;
 
-export const LoginButton = styled(Nav.Link)`
+export const LogButton = styled(Nav.Link)`
   align-self: center;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.textAndButton};

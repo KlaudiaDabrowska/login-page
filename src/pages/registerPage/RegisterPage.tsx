@@ -13,7 +13,7 @@ export const RegisterPage = () => {
         <StyledCol sm={4}>
           <WelcomeText header="Vetty" welcomeText="Nice to meet you!" welcomeTextTwo="Sign Up for a Free account" />
           <RegisterForm />
-          <Redirect RedirectTxt="Already registered?" RedirectLinkName="Login" RedirectLinkTo="/login" />
+          <Redirect RedirectTxt="Already registered?" RedirectLinkName="Log in" RedirectLinkTo="/login" />
         </StyledCol>
         <Col sm={8}>
           <RightContainerTxt textOne="Welcome to Vetty." textTwo="Your veterinary organizer." />

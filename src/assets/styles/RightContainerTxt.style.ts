@@ -7,7 +7,7 @@ export const ContainerWrapper = styled.div`
 `;
 
 export const HeaderOne = styled.h3`
-  font-size: ${({ theme }) => theme.fontSize.xxl};
+  font-size: ${({ theme }) => theme.fontSize.xxxl};
   color: ${({ theme }) => theme.colors.darkerBackgroundPrimary};
 `;
 

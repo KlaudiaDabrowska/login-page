@@ -12,6 +12,7 @@ declare module 'styled-components' {
       buttonHover: string;
     };
     fontSize: {
+      xxxl: string;
       xxl: string;
       xl: string;
       l: string;
