@@ -38,3 +38,7 @@ export const StyledButton = styled(Button)`
     background-color: ${({ theme }) => theme.colors.darkerBackgroundPrimary};
   }
 `;
+
+export const StyledFeedback = styled(Form.Control.Feedback)`
+  font-size: 12px;
+`;
