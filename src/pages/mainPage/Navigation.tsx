@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { ContentButton, Logo, NavWrapper, LogButton, SignUpButton } from '../../assets/styles/Navigation.styles';
+import { ContentButton, Logo, NavWrapper, LogButton, SignUpButton } from '../../styles/Navigation.styles';
 import { Link } from 'react-router-dom';
 
 export const Navigation = () => {

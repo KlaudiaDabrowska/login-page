@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyledForm, StyledInput, StyledLabel } from '../../assets/styles/Form.styles';
+import { StyledForm, StyledInput, StyledLabel } from '../../styles/Form.styles';
 import { Form } from 'react-bootstrap';
-import { StyledButton } from '../../assets/styles/Form.styles';
+import { StyledButton } from '../../styles/Form.styles';
 
 export const LoginForm = () => {
   return (

@@ -1,6 +1,6 @@
 import { Container } from 'react-bootstrap';
 import React from 'react';
-import { StyledMainPageCol, Description, StyledRow } from '../../assets/styles/PageContent.style';
+import { StyledMainPageCol, Description, StyledRow } from '../../styles/PageContent.style';
 
 export const PageContent = () => {
   return (

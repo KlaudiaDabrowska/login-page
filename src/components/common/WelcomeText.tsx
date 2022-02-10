@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, StyledWelcomeTxt, WelcomeWrapper } from '../../assets/styles/WelcomeText.style';
+import { Header, StyledWelcomeTxt, WelcomeWrapper } from '../../styles/WelcomeText.style';
 
 interface WelcomeTextProps {
   header: string;

@@ -3,8 +3,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { ThemeProvider } from 'styled-components';
-import { theme } from './assets/styles/theme';
-import { GlobalStyle } from './assets/styles/GlobalStyle';
+import { theme } from './styles/theme';
+import { GlobalStyle } from './styles/GlobalStyle';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { MainPage } from './pages/mainPage/MainPage';
 import { LoginPage } from './pages/loginPage/LoginPage';

@@ -1,17 +1,17 @@
 import React from 'react';
-import { RedirectText, RedirectWrapper, StyledLink } from '../../assets/styles/Redirect.style';
+import { RedirectText, RedirectWrapper, StyledLink } from '../../styles/Redirect.style';
 
 interface RedirectProp {
-  RedirectTxt: string;
-  RedirectLinkTo: string;
-  RedirectLinkName: string;
+  redirectTxt?: string;
+  redirectLinkTo: string;
+  redirectLinkName: string;
 }
 
-export const Redirect = ({ RedirectTxt, RedirectLinkTo, RedirectLinkName }: RedirectProp) => {
+export const Redirect = ({ redirectTxt, redirectLinkTo, redirectLinkName }: RedirectProp) => {
   return (
     <RedirectWrapper>
-      <RedirectText>{RedirectTxt}</RedirectText>
-      <StyledLink to={RedirectLinkTo}>{RedirectLinkName}</StyledLink>
+      <RedirectText>{redirectTxt}</RedirectText>
+      <StyledLink to={redirectLinkTo}>{redirectLinkName}</StyledLink>
     </RedirectWrapper>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Logo, NavWrapper, LogButton } from '../../assets/styles/Navigation.styles';
+import { Logo, NavWrapper, LogButton } from '../../styles/Navigation.styles';
 import { Link } from 'react-router-dom';
 
 export const NavBar = () => {

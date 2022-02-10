@@ -1,11 +1,23 @@
-import React from 'react';
-import { StyledForm, StyledInput, StyledLabel, StyledFeedback } from '../../assets/styles/Form.styles';
+import React, { useState } from 'react';
+import { StyledForm, StyledInput, StyledLabel, StyledFeedback } from '../../styles/Form.styles';
 import { Form } from 'react-bootstrap';
-import { StyledButton } from '../../assets/styles/Form.styles';
+import { StyledButton } from '../../styles/Form.styles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { app } from '../../config/firebase';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 export const RegisterForm = () => {
+  const [succesSignUp, setSuccesSignUp] = useState(false);
+  const [errorSignUp, setErrorSignUp] = useState(false);
+
+  const handleClose = () => {
+    setSuccesSignUp(false);
+    setErrorSignUp(false);
+  };
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -18,10 +30,22 @@ export const RegisterForm = () => {
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/, '8 characters, one uppercase letter, one number'),
     }),
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(values);
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, values.email, values.password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          setSuccesSignUp(true);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorSignUp(true);
+        });
+
+      formik.resetForm();
     },
   });
+
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
       <Form.Group className="mb-3">
@@ -38,7 +62,6 @@ export const RegisterForm = () => {
         />
         {formik.touched.email && formik.errors.email ? <StyledFeedback type="invalid">{formik.errors.email}</StyledFeedback> : null}
       </Form.Group>
-
       <Form.Group className="mb-3">
         <StyledLabel htmlFor="password">Password</StyledLabel>
         <StyledInput
@@ -56,6 +79,16 @@ export const RegisterForm = () => {
       <StyledButton variant="primary" type="submit" size="sm">
         Sign Up
       </StyledButton>
+      <Snackbar open={succesSignUp} autoHideDuration={6000} onClose={handleClose}>
+        <Alert variant="filled" onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          You have created your account!
+        </Alert>
+      </Snackbar>
+      <Snackbar open={errorSignUp} autoHideDuration={6000} onClose={handleClose}>
+        <Alert variant="filled" onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+          This email is already registered.
+        </Alert>
+      </Snackbar>
     </StyledForm>
   );
 };

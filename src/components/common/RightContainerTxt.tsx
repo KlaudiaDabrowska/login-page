@@ -1,5 +1,5 @@
 import React from 'react';
-import { ContainerWrapper, HeaderOne, HeaderThree, HeaderTwo } from '../../assets/styles/RightContainerTxt.style';
+import { ContainerWrapper, HeaderOne, HeaderThree, HeaderTwo } from '../../styles/RightContainerTxt.style';
 
 interface Props {
   textOne: string;
