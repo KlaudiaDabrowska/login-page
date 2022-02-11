@@ -9,6 +9,12 @@ import { app } from '../../config/firebase';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
+interface CreateUserProp {
+  auth: any;
+  email: string;
+  password: string;
+}
+
 export const RegisterForm = () => {
   const [succesSignUp, setSuccesSignUp] = useState(false);
   const [errorSignUp, setErrorSignUp] = useState(false);
@@ -16,6 +22,19 @@ export const RegisterForm = () => {
   const handleClose = () => {
     setSuccesSignUp(false);
     setErrorSignUp(false);
+  };
+
+  const createUser = ({ auth, email, password }: CreateUserProp) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setSuccesSignUp(true);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorSignUp(true);
+      });
   };
 
   const formik = useFormik({
@@ -30,18 +49,20 @@ export const RegisterForm = () => {
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/, '8 characters, one uppercase letter, one number'),
     }),
     onSubmit: (values) => {
+      const firebaseApp = app;
+      // const auth = getAuth();
+      // createUserWithEmailAndPassword(auth, values.email, values.password)
+      //   .then((userCredential) => {
+      //     const user = userCredential.user;
+      //     setSuccesSignUp(true);
+      //   })
+      //   .catch((error) => {
+      //     const errorCode = error.code;
+      //     const errorMessage = error.message;
+      //     setErrorSignUp(true);
+      //   });
       const auth = getAuth();
-      createUserWithEmailAndPassword(auth, values.email, values.password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          setSuccesSignUp(true);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          setErrorSignUp(true);
-        });
-
+      createUser({ auth: auth, email: values.email, password: values.password });
       formik.resetForm();
     },
   });
