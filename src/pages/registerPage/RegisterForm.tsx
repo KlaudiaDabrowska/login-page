@@ -4,36 +4,30 @@ import { Form } from 'react-bootstrap';
 import { StyledButton } from '../../styles/Form.styles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, Auth } from 'firebase/auth';
 import { app } from '../../config/firebase';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
 interface CreateUserProp {
-  auth: any;
+  auth: Auth;
   email: string;
   password: string;
 }
 
 export const RegisterForm = () => {
-  const [succesSignUp, setSuccesSignUp] = useState(false);
-  const [errorSignUp, setErrorSignUp] = useState(false);
+  const [isSuccessSignUpShown, setIsSuccessSignUpShown] = useState(false);
+  const [isErrorSignUpShown, setIsErrorSignUpShown] = useState(false);
 
-  const handleClose = () => {
-    setSuccesSignUp(false);
-    setErrorSignUp(false);
-  };
+  const auth = getAuth(app);
 
   const createUser = ({ auth, email, password }: CreateUserProp) => {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        setSuccesSignUp(true);
+      .then(() => {
+        setIsSuccessSignUpShown(true);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setErrorSignUp(true);
+        setIsErrorSignUpShown(true);
       });
   };
 
@@ -46,22 +40,9 @@ export const RegisterForm = () => {
       email: Yup.string().email('Invalid email address').required('Required'),
       password: Yup.string()
         .required('Required.')
-        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/, '8 characters, one uppercase letter, one number'),
+        .matches(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/, '8 characters, one uppercase letter, one number'),
     }),
     onSubmit: (values) => {
-      const firebaseApp = app;
-      // const auth = getAuth();
-      // createUserWithEmailAndPassword(auth, values.email, values.password)
-      //   .then((userCredential) => {
-      //     const user = userCredential.user;
-      //     setSuccesSignUp(true);
-      //   })
-      //   .catch((error) => {
-      //     const errorCode = error.code;
-      //     const errorMessage = error.message;
-      //     setErrorSignUp(true);
-      //   });
-      const auth = getAuth();
       createUser({ auth: auth, email: values.email, password: values.password });
       formik.resetForm();
     },
@@ -100,13 +81,13 @@ export const RegisterForm = () => {
       <StyledButton variant="primary" type="submit" size="sm">
         Sign Up
       </StyledButton>
-      <Snackbar open={succesSignUp} autoHideDuration={6000} onClose={handleClose}>
-        <Alert variant="filled" onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+      <Snackbar open={isSuccessSignUpShown} autoHideDuration={6000} onClose={() => setIsSuccessSignUpShown(false)}>
+        <Alert variant="filled" onClose={() => setIsSuccessSignUpShown(false)} severity="success" sx={{ width: '100%' }}>
           You have created your account!
         </Alert>
       </Snackbar>
-      <Snackbar open={errorSignUp} autoHideDuration={6000} onClose={handleClose}>
-        <Alert variant="filled" onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+      <Snackbar open={isErrorSignUpShown} autoHideDuration={6000} onClose={() => setIsErrorSignUpShown(false)}>
+        <Alert variant="filled" onClose={() => setIsErrorSignUpShown(false)} severity="error" sx={{ width: '100%' }}>
           This email is already registered.
         </Alert>
       </Snackbar>
